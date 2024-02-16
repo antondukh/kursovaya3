@@ -1,5 +1,5 @@
 def load_json_file():
-    """Чтение файла json и вывод переменной."""
+    """Чтение файла json."""
     import json
     with open("operations.json", "r", encoding="utf8") as file:
         operations = file.read()
@@ -8,15 +8,23 @@ def load_json_file():
 
 
 def sort_by_date():
-    """Сортировка операций по дате и вывод 5-ти последних операций."""
-    sorted_operation_list = []
-    for person in load_json_file():
-        if person:
-            sorted_operation_list.append(person)
+    """Сортировка операций по дате."""
+    operations_list = []
+    for item in load_json_file():
+        if item:
+            operations_list.append(item)
+    list_sorted_by_date = sorted(operations_list, key=lambda x: x['date'], reverse=True)
+    return list_sorted_by_date
 
-    sorted_list = sorted(sorted_operation_list, key=lambda x: x['date'], reverse=True)
+
+def last_executed_operation():
+    """Вывод 5-ти последних EXECUTED операций."""
+    sorted_list = []
+    for i in sort_by_date():
+        if i['state'] != 'CANCELED':
+            sorted_list.append(i)
+
     return sorted_list[0:5]
 
 
-print(sort_by_date())
-
+print(last_executed_operation())
