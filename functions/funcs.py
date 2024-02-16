@@ -20,11 +20,30 @@ def sort_by_date():
 def last_executed_operation():
     """Вывод 5-ти последних EXECUTED операций."""
     sorted_list = []
-    for i in sort_by_date():
-        if i['state'] != 'CANCELED':
-            sorted_list.append(i)
+    for item in sort_by_date():
+        if item['state'] != 'CANCELED':
+            sorted_list.append(item)
 
     return sorted_list[0:5]
 
 
-print(last_executed_operation())
+#print(last_executed_operation())
+
+def output():
+    """Вывод операций в нужном формате"""
+    #hhh = []
+    for i in last_executed_operation():
+        if i['description'] == 'Открытие вклада':
+            #hhh.append(i)
+            print(i["date"], i['description'])
+            print(i['to'])
+            print(i["operationAmount"]['amount'], i['operationAmount']['currency']['name'])
+            print()
+        else:
+            print(i["date"], i['description'])
+            print(i['from'], i['to'])
+            print(i["operationAmount"]['amount'], i['operationAmount']['currency']['name'])
+            print()
+
+
+print(output())
