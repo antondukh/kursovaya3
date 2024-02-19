@@ -1,8 +1,3 @@
-from functions.funcs import last_executed_operation
-
-sort_list = last_executed_operation()
-
-
 class Operation:
     def __init__(self, operation):
         self.operation = operation
@@ -28,11 +23,3 @@ class Operation:
     def amount(self):
         """Вывод суммы операции и валюты."""
         return f"{self.operation['operationAmount']['amount']} {self.operation['operationAmount']['currency']['name']}"
-
-
-for i in sort_list:
-    gg = Operation(i)
-    print(gg.date())
-    print(gg.from_to())
-    print(f"""{gg.amount()}
-    """)
