@@ -1,4 +1,3 @@
-import string
 from functions.funcs import last_executed_operation
 
 sort_list = last_executed_operation()
