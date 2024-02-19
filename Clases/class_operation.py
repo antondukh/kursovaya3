@@ -2,7 +2,7 @@ import string
 from functions.funcs import last_executed_operation
 
 sort_list = last_executed_operation()
-print(sort_list[1])
+
 
 class Operation:
     def __init__(self, operation):
@@ -33,7 +33,7 @@ class Operation:
 
 for i in sort_list:
     gg = Operation(i)
-    #print(gg.date())
+    print(gg.date())
     print(gg.from_to())
-    #print(f"""{gg.amount()}
-#""")
+    print(f"""{gg.amount()}
+    """)
