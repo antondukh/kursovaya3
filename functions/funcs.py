@@ -21,7 +21,11 @@ def last_executed_operation():
     """Вывод 5-ти последних EXECUTED операций."""
     sorted_list = []
     for item in sort_by_date():
-        if item['state'] != 'CANCELED':
+        if item['state'] == 'EXECUTED':
             sorted_list.append(item)
-
     return sorted_list[0:5]
+
+
+operations_list = load_json_file()
+list_sorted_by_date = sort_by_date()
+sorted_list = last_executed_operation()
