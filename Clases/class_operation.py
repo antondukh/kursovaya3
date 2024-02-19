@@ -8,30 +8,35 @@ pp = pprint.PrettyPrinter(indent=4)
 
 
 class Operation:
-    def __init__(self, date_, description_, from_, to_, amount_, code_):
-        self.date_ = date_
-        self.description_ = description_
-        self.from_ = from_
-        self.to_ = to_
-        self.amount_ = amount_
-        self.code_ = code_
-        #print(self.date_, self.description_, self.from_, self.to_, self.amount_, self.code_)
+    def __init__(self, operation):
+        self.operation = operation
 
     def date(self):
-        s = f"{self.date_[8:10]}.{self.date_[5:7]}.{self.date_[0:4]}"
-        return f"{s} {self.description_}"
+        date_ = f"{self.operation['date'][8:10]}.{self.operation['date'][5:7]}.{self.operation['date'][0:4]}"
+        description_ = self.operation['description']
+        return f"{date_} {description_}"
 
     def from_to(self):
-        s2 = ''.join(c for c in self.from_ if c in string.ascii_letters)
-        numbers = ''.join(c if c.isdigit() else ' ' for c in self.from_).split()
-        return f"{s2} {numbers[0][0:4]} {numbers[0][4:6]}** **** {numbers[0][-4::]} -> {self.to_[0:4]} **{self.to_[-4::]}"
+        if 'from' in self.operation:
+            s2 = ''.join(c for c in self.operation['from'] if c in string.ascii_letters)
+            numbers = ''.join(c if c.isdigit() else ' ' for c in self.operation['from']).split()
+            from_ = f"{s2} {numbers[0][0:4]} {numbers[0][4:6]}** **** {numbers[0][-4::]}"
+            to_ = f"-> {self.operation['to'][0:4]} **{self.operation['to'][-4::]}"
+            return f"{from_} {to_}"
+        else:
+            to_ = f"{self.operation['to'][0:4]} **{self.operation['to'][-4::]}"
+            return to_
 
     def amount(self):
-        return f"{self.amount_} {self.code_}"
+        return f"{self.operation['operationAmount']['amount']} {self.operation['operationAmount']['currency']['name']}"
+
+for i in sort_list:
+    gg = Operation(i)
+    #print(gg)
+    print(gg.date())
+    print(gg.from_to())
+    print(gg.amount())
 
 
-gg = Operation(sort_list[1]['date'], sort_list[1]['description'], sort_list[1]['from'], sort_list[1]['to'], sort_list[1]['operationAmount']['amount'], sort_list[1]['operationAmount']['currency']['name'])
-#print(gg)
-print(gg.date())
-print(gg.from_to())
-print(gg.amount())
+
+
