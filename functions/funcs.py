@@ -25,24 +25,3 @@ def last_executed_operation():
             sorted_list.append(item)
 
     return sorted_list[0:5]
-
-
-#print(last_executed_operation())
-
-# def output():
-#     """Вывод операций в нужном формате"""
-#     #hhh = []
-#     for i in last_executed_operation():
-#         if i['description'] == 'Открытие вклада':
-#             #hhh.append(i)
-#             print(i["date"], i['description'])
-#             print(i['to'])
-#             print(i["operationAmount"]['amount'], i['operationAmount']['currency']['name'])
-#             print()
-#         else:
-#             print(i["date"][0:10], i['description'])
-#             print(i['from'], i['to'])
-#             print(i["operationAmount"]['amount'], i['operationAmount']['currency']['name'])
-#             print()
-
-
