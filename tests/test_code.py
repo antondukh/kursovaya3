@@ -49,3 +49,13 @@ def test_date_r():
         {'date': '08.12.2019'},
         {'date': '07.12.2019'}
         ]
+
+
+from_ = {'from': 'Visa Classic 2842878893689012',
+         'to': 'Счет 35158586384610753655'}
+to_ = {'to': 'Счет 90424923579946435907'}
+
+
+def test_class():
+    assert Operation(to_).from_to() == 'Счет **5907'
+    assert Operation(from_).from_to() == "Visa Classic  2842 87** **** 9012 -> Счет **3655"

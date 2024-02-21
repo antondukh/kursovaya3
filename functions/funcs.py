@@ -1,6 +1,6 @@
 import json
 
-with open("operations.json", 'r', encoding="utf8") as file:
+with open("C:/Users/User/PycharmProjects/kursovaya3/operations.json", 'r', encoding="utf8") as file:
     operations = file.read()
     json_file = json.loads(operations)
 
