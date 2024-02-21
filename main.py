@@ -1,12 +1,13 @@
-from functions.funcs import last_executed_operation
+from functions.funcs import *
 from Clases.class_operation import Operation
 
+
 # Список 5ти последних одобренных операций.
-sort_list = last_executed_operation()
+
 # Цикл для выводла операций в нужном формате
-for i in sort_list:
+for i in right_date:
     gg = Operation(i)
-    print(gg.date())
-    print(gg.from_to())
-    print(f"""{gg.amount()}
+    print(f"""{i['date']}, {i['description']}
+{gg.from_to()}
+{i['operationAmount']['amount']} {i['operationAmount']['currency']['name']}
     """)
